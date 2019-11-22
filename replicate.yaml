@@ -7,7 +7,7 @@ entrypoints:
   infer: predict_on_audio:infer_example_melody1
 formats:
   input: audio_path
-  output: times_freqs
+  output: melody_times_freqs
 test_set: medleydb_melody1
 python_dependencies:
   - tensorflow==1.12.0
