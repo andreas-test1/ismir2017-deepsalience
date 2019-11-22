@@ -300,6 +300,20 @@ def save_singlef0_output(times, freqs, output_path):
         csv_writer = csv.writer(fhandle, delimiter='\t')
         for t, f in zip(times, freqs):
             csv_writer.writerow([t, f])
+            
+            
+def load_model_melody1():
+    return load_model("melody1")
+
+
+def infer_example_melody1(model, audio_path):
+    hcqt, freq_grid, time_grid = compute_hcqt(audio_path)
+    pitch_activation_mat = get_single_test_prediction(model, hcqt)
+    times, freqs = get_singlef0(
+        pitch_activation_mat, freq_grid, time_grid, thresh=0.3,
+        use_neg=True
+    )
+    return times, freqs
 
 
 def compute_output(hcqt, time_grid, freq_grid, task, output_format, threshold,
