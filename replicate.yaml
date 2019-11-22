@@ -1,4 +1,4 @@
-version: 0.1
+version: "0.1"
 name: Deep Salience
 task: single_f0_estimation
 workdir: predict
